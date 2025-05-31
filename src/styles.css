@@ -2,11 +2,14 @@
     --bg-color: #F4F4ED;
 }
 
+* {
+    padding: 0;
+    margin: 0;
+}
+
 html,
 body{
     height: 100%;
-    padding: 0;
-    margin: 0;
 }
 
 body {
@@ -23,9 +26,34 @@ main {
     margin-top: 100px;
 }
 
-#search {
-    width: 300px;
+form {
+    margin-bottom: 20px;
 }
-.container {
 
+#search {
+    width: 600px;
+    height: 20px;
+}
+.weather-section {
+    padding: 10px;
+    border: 1px solid #000000;
+
+}
+.weather-main {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+}
+
+.weather-current {
+    display: flex;
+    gap: 10px;
+}
+
+
+.weather-future {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
 }

@@ -1,16 +1,13 @@
+import { reloadDom } from "./modules/domLoader";
+
+
 const form = document.querySelector("form");
 const search = document.getElementById("search");
-const weathergif = document.getElementById("weathergif");
-
-const weather = document.getElementById("weather");
-const temp = document.getElementById("temp");
 
 const weatherKey = "PS4QY6XPQUKYHGGSU3JN5G9TL";
 const gifKey = "tIzb3AThmrdJciOYx1YVs7LuogxMzFQC";
 
-
 //TODO
-// Install webpack
 // Add weather icons with dynamic imports
 // Figure out a design and implement it
 
@@ -22,17 +19,21 @@ const searchWeather = async (location) => {
 
 
         // display weather information
-        console.log(jsonWeather);
-        temp.innerHTML = jsonWeather.currentConditions.temp;
-        weather.innerHTML = jsonWeather.currentConditions.icon
+
 
         // display gif information
-        const responseGif = await fetch("https://api.giphy.com/v1/gifs/translate?api_key="+ gifKey + "&s=" + jsonWeather.currentConditions.icon  ,  {mode: "cors"});
+        const responseGif = await fetch("https://api.giphy.com/v1/gifs/translate?api_key="+ gifKey + "&s=" + jsonWeather.currentConditions.icon + " sky"  ,  {mode: "cors"});
         const jsonGif = await responseGif.json();
 
-        weathergif.setAttribute("src", jsonGif.data.images.original.url)
+        if(jsonWeather && jsonGif){
+            console.log(jsonWeather);
+            console.log(jsonGif);
+
+            reloadDom(jsonWeather, jsonGif);
+
+        }
     } catch(err) {
-        console.log(err)
+        console.log(err);
     }
 
 
