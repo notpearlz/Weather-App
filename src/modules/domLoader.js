@@ -3,13 +3,25 @@ import "../styles.css"
 const main = document.querySelector(".container");
 
 export const reloadDom = (weatherData, gifData) => {
+    reloadSearch(weatherData.resolvedAddress);
     reloadWeather(weatherData);
     reloadGif(gifData);
 }
 
+const reloadSearch = (address) => {
+    if(document.querySelector(".searchResult")){
+        document.querySelector(".searchResult").remove();
+    }
+    
+    const searchResult = document.createElement("h1");
+    searchResult.classList.add("searchResult");
+    searchResult.innerHTML = address;
+    main.append(searchResult);
+
+}
+
 
 const reloadWeather =(data)=>{
-
     if(document.querySelector(".weather-section")){
         document.querySelector(".weather-section").remove();
     }
@@ -35,6 +47,7 @@ const reloadWeather =(data)=>{
         currentStatus.classList.add("weather-status");
 
         const img = document.createElement("img");
+        img.classList.add("weather-icon");
         (async ()=> {
             const icon = await import (`../assets/Weather-Icons/${data.currentConditions.icon}.svg`)
             img.src = icon.default;
@@ -60,7 +73,7 @@ const reloadWeather =(data)=>{
         humidity.innerHTML =  "Humidity " + data.currentConditions.humidity;
 
         const wind = document.createElement("p");
-        wind.innerHTML = "Wind: " + (data.currentConditions.windspeed*10) + " mph";
+        wind.innerHTML = "Wind: " + (data.currentConditions.windspeed) + " mph";
 
         currentDetails.append(precipitation);
         currentDetails.append(humidity);

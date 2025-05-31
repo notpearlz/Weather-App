@@ -7,9 +7,6 @@ const search = document.getElementById("search");
 const weatherKey = "PS4QY6XPQUKYHGGSU3JN5G9TL";
 const gifKey = "tIzb3AThmrdJciOYx1YVs7LuogxMzFQC";
 
-//TODO
-// Add weather icons with dynamic imports
-// Figure out a design and implement it
 
 const searchWeather = async (location) => {
 
