@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[871],{871:(c,s,e)=>{e.r(s),e.d(s,{default:()=>f});const f=e.p+"21754c08cf67996293bffcc631607784.svg"}}]);
